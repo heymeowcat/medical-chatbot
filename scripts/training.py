@@ -7,9 +7,10 @@ def train_model():
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     tokenized_dataset = load_from_disk("data/processed/train")
 
+
     training_args = TrainingArguments(
         output_dir="./results",
-        evaluation_strategy="no",
+        eval_strategy="no", 
         learning_rate=2e-5,
         per_device_train_batch_size=4,
         num_train_epochs=3,
