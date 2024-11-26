@@ -2,7 +2,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingA
 from datasets import load_from_disk
 
 def train_model():
-    model_name = "facebook/opt-1.3B"
+    model_name = "facebook/opt-125m"
     model = AutoModelForCausalLM.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     tokenized_dataset = load_from_disk("data/processed/train")
@@ -16,6 +16,8 @@ def train_model():
         num_train_epochs=3,
         weight_decay=0.01,
         save_total_limit=2,
+        bf16=True,
+        gradient_accumulation_steps=4,
     )
 
     trainer = Trainer(
@@ -25,8 +27,8 @@ def train_model():
     )
 
     trainer.train()
-    trainer.save_model("models/opt-1.3B")
-    tokenizer.save_pretrained("models/opt-1.3B")
+    trainer.save_model("models/facebook/opt-125m")
+    tokenizer.save_pretrained("models/facebook/opt-125m")
 
 if __name__ == "__main__":
     train_model()

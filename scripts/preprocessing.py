@@ -3,7 +3,7 @@ from transformers import AutoTokenizer
 
 def preprocess_dataset():
     dataset = load_dataset("ruslanmv/ai-medical-chatbot")
-    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3B")
+    tokenizer = AutoTokenizer.from_pretrained("facebook/opt-125m")
 
     def combine_conversations(examples):
         conversations = []

@@ -1,2 +1,3 @@
 # medical-chatbot
- This project aims to build a medical chatbot using the `opt-1.3B` model and the `ruslanmv/ai-medical-chatbot` dataset.
+
+This project aims to build a medical chatbot using the `facebook/opt-125m` model and the `ruslanmv/ai-medical-chatbot` dataset.
